@@ -1,15 +1,30 @@
 import Ofert from "@/components/Ofert";
-import Image from "next/image";
 
 export default function Home() {
   return (
-    // <main className="flex min-h-screen flex-col items-center justify-between p-24">
-    <main className="grid grid-flow-col md:grid-flow-row">
-      <p>Hola mundo soy Home</p>
+    <main className="flex justify-between">
+      <div className="hidden lg:block">
+        <article className="w-80 p-6 bg-white rounded-lg shadow dark:bg-green-400">
+          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            Expertos en préstamos
+          </h5>
+          <p className="mb-3 font-normal text-gray-800">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry
+          </p>
+          <button className=" bg-indigo-500 hover:bg-indigo-700 text-white inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
+            Buscar un asesor
+          </button>
+        </article>
+      </div>
+      <div className="mx-auto">
         <Ofert />
         <Ofert />
         <Ofert />
         <Ofert />
+        <Ofert />
+        <Ofert />
+        <Ofert />
+      </div>
     </main>
   );
 }

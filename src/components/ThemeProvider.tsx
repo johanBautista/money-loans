@@ -21,17 +21,17 @@ const ThemeProvider = () => {
       <button onClick={openMenu} className={isNavExpanded ? "" : "h-6 w-6 cursor-pointer md:hidden block"}>
         🍀
       </button>
-      <div className={isNavExpanded ? "w-full text-center" : "hidden w-full md:flex md:items-center md:w-auto"}>
+      <div className={isNavExpanded ? "w-full text-start " : "hidden w-full md:flex md:items-center md:w-auto"}>
         <ul
           className={
             isNavExpanded
-              ? "w-full divide-y divide-blue-700"
+              ? "w-full divide-y divide-indigo-100"
               : "text-base text-gray-700 pt-4 md:flex md:justify-between md:pt-0"
           }
         >
           {routeLinks.map(({ label, route }) => (
             <li key={route}>
-              <Link href={route} className={isNavExpanded ? "w-full " : "md:p-4 py-2 block hover:text-purple-400"}>
+              <Link href={route} className={isNavExpanded ? "w-full" : "md:p-4 py-2 block hover:text-purple-400"}>
                 {label}
               </Link>
             </li>

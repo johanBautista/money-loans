@@ -1,8 +1,8 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
-import { routeLinks } from "@/utils/routes";
-import Link from "next/link";
 import ThemeProvider from "@/components/ThemeProvider";
+import HeroSection from "@/components/HeroSection";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,16 +14,18 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.className} suppressHydrationWarning={true}>
+      <body className={`${inter.className}`} suppressHydrationWarning={true}>
         <header>
           <ThemeProvider />
-          <section>
-            <p>Hola soy el heroSection</p>
+          <section className="">
+            <HeroSection />
           </section>
         </header>
-        <main>{children}</main>
+        <main className="max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+          {children}
+        </main>
         <footer>
-          <p>Hola soy el footer</p>
+          <Footer />
         </footer>
       </body>
     </html>
