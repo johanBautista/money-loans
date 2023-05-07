@@ -1,7 +1,10 @@
+"use client";
 import React from "react";
 import Link from "next/link";
+import { Offert, Offerts } from "@/utils/types";
 
-const Ofert = () => {
+const Ofert = ({ offert }: Offerts) => {
+
   return (
     <div className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow mb-2 md:flex-row md:max-w-7xl hover:bg-gray-100 text-xs">
       <div className="flex flex-col lg:flex-row justify-between p-2 leading-normal">
@@ -20,13 +23,13 @@ const Ofert = () => {
           <p className="text-sm mr-2 font-extralight">Hasta</p>
           <div className="pb-1 flex justify-end">
             <p className="text-lg">
-              2500 <small>€</small>
+              {offert?.import} <small>€</small>
             </p>
           </div>
           <div className="bg-gray-200 rounded px-1 flex justify-between">
             <p className="text-lg mr-2">TIN</p>
             <p className="text-lg">
-              2.50 <small>%</small>
+              {offert?.tin} <small>%</small>
             </p>
           </div>
         </div>
@@ -41,18 +44,29 @@ const Ofert = () => {
           </ul>
         </div>
 
-        <div className="self-end px-2 text-gray-500 ">
+        <div className="mt-3 self-end px-2 text-gray-500 ">
+          <div>
+            <span className="pr-3 font-bold text-gray-400 ">Entidad</span>
+
+            <span className="bg-cyan-500 rounded text-white p-2">{offert?.name}</span>
+          </div>
           <div className="mt-2 flex justify-between mb-2">
             <div className="self-center mx-4">
-              <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
-                <path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402m5.726-20.583c-2.203 0-4.446 1.042-5.726 3.238-1.285-2.206-3.522-3.248-5.719-3.248-3.183 0-6.281 2.187-6.281 6.191 0 4.661 5.571 9.429 12 15.809 6.43-6.38 12-11.148 12-15.809 0-4.011-3.095-6.181-6.274-6.181" />
-              </svg>
+              {offert?.favorite ? (
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path d="M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z" />
+                </svg>
+              ) : (
+                <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
+                  <path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402m5.726-20.583c-2.203 0-4.446 1.042-5.726 3.238-1.285-2.206-3.522-3.248-5.719-3.248-3.183 0-6.281 2.187-6.281 6.191 0 4.661 5.571 9.429 12 15.809 6.43-6.38 12-11.148 12-15.809 0-4.011-3.095-6.181-6.274-6.181" />
+                </svg>
+              )}
             </div>
             <Link
               href="#"
               className=" bg-indigo-500 hover:bg-indigo-700 text-white inline-flex items-center justify-center px-5 py-3 mr-3 text-base text-xs text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
             >
-              Seleccionar
+              Ver más
             </Link>
             <Link
               href="#"

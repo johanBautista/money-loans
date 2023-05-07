@@ -5,5 +5,6 @@ export interface RouteLinks {
 
 export const routeLinks: RouteLinks[] = [
   { label: "home", route: "/" },
-  { label: "favorites", route: "/favorites" },
+  { label: "ofertas", route: "/ofertas" },
+  { label: "favoritos", route: "/favoritos" },
 ];
