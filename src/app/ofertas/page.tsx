@@ -9,7 +9,8 @@ const fetchOfferts = () => {
 };
 
 export default async function Oferts() {
-  const offerts = await fetchOfferts();
+  const offertsUser = await fetchOfferts();
+  console.log("EEDED", typeof offertsUser, "RESPONSE", offertsUser.offerts);
 
   return (
     <main className="flex justify-between">
@@ -26,10 +27,16 @@ export default async function Oferts() {
           </button>
         </article>
       </div>
-      <div className="mx-auto">
-        {offerts.slice(0, 5).map((offert: Offert) => (
-          <Ofert key={offert._id} offert={offert} />
-        ))}
+      <div className="mx-auto md:w-fit">
+        {offertsUser.offerts.length > 0 ? (
+          <div>
+            {offertsUser.offerts.map((offert: Offert) => (
+              <Ofert key={offert._id} offert={offert} />
+            ))}
+          </div>
+        ) : (
+          <h4 className="text-indigo-400 text-3xl mb-4">Seguimos buscando las mejores ofertas!</h4>
+        )}
       </div>
     </main>
   );
