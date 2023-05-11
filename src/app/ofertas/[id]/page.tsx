@@ -1,22 +1,27 @@
 "use client";
 
 import Ofert from "@/components/Ofert";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export default function Offert() {
-  const [offertData, setOffertData] = useState("");
+export default function OffertPage() {
+  const [offertData, setOffertData] = useState({});
+  const [loading, setLoading] = useState(true);
+
   const pathName = usePathname();
 
   useEffect(() => {
-    const test = pathName.split("/")[2];
-    const fetchData = () => {
-      const result = fetch(`${process.env.NEXT_PUBLIC_API_URL}/offerts/${test}`)
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          setOffertData(data);
-        });
+    const idOffert = pathName.split("/")[2];
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/offerts/${idOffert}`);
+        const data = await res.json();
+        setOffertData(data);
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+        setLoading(false);
+      }
     };
 
     fetchData();
@@ -24,8 +29,14 @@ export default function Offert() {
 
   return (
     <main className="mx-auto md:w-fit">
-      <p className="text-2xl text-indigo-700">{offertData?.offert?.name}</p>
-      <Ofert offert={offertData?.offert} />
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <>
+          <p className="text-2xl text-indigo-700">{offertData?.offert?.name}</p>
+          <Ofert offert={offertData?.offert} />
+        </>
+      )}
     </main>
   );
 }
